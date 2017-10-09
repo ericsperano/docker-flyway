@@ -4,6 +4,9 @@ ENV FLYWAY_VERSION 4.0
 ENV FLYWAY_SQL_DIR /sql
 
 RUN mkdir /opt \
+  && apk update \
+  && apk add ca-certificates wget \
+  && update-ca-certificates \
   && wget -qO- https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/4.0/flyway-commandline-${FLYWAY_VERSION}.tar.gz | tar -xzf- -C /opt \
   && mv /opt/flyway-${FLYWAY_VERSION} /opt/flyway \
   && sed -i 's/bash/sh/' /opt/flyway/flyway \
