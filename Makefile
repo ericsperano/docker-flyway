@@ -11,7 +11,7 @@ image:
 	$(DOCKER) build -t $(DOCKER_IMAGE) . #--squash
 	$(DOCKER) tag $(DOCKER_IMAGE) $(DOCKER_IMAGE_LATEST)
 
-push:
+push: image
 	$(DOCKER) push $(DOCKER_IMAGE)
 	$(DOCKER) push $(DOCKER_IMAGE_LATEST)
 
